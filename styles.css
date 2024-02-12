@@ -65,4 +65,19 @@
     font-weight: 800;
     font-style: italic;
 }
+
+body {
+    background-color: var(--off-white);
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr;
+    background-color: var(--white);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    justify-content: center;
+}
   
