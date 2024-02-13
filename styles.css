@@ -78,6 +78,9 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    padding-bottom: 2rem;
+    border-radius: 1rem;
+    border-bottom-right-radius: 2.5rem;
 }
 
 .form-inputs {
@@ -92,20 +95,20 @@ input {
     max-width: 5rem;
     height: 2.5rem;
     border-radius: 0.25rem;
-    padding-left: 0.5rem;
-    border: 1px solid black;
-    font-size: 2rem;
+    padding: 0.25rem 0.25rem 0.25rem 0.75rem;
+    border: 1px solid var(--light-grey);
+    font-size: 1.75rem;
 }
 
 .input-col {
     display: grid;
-    padding-left: 0.5rem;
     height: max-content;
     align-items: center;
 }
 
 label {
     margin-bottom: 0.5rem;
+    letter-spacing: 1.75px;
     color: var(--smokey-grey);
     font-size: 0.75rem;
 }
@@ -122,3 +125,74 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
+.arrow-section {
+    background: #FFF;
+    display: flex;
+    justify-content: center;
+}
+
+.result-button {
+    display: flex;
+    justify-content: center;
+    z-index: 2000;
+    padding: 1.5rem;
+    background: hsl(259, 100%, 65%);
+    background-image: url(./assets/images/icon-arrow.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 2rem;
+    width: 0.75rem;
+    border: 0;
+    border-radius: 50%;
+}
+
+.arrow-section::after {
+    content: '';
+    display: block;
+    position: absolute;
+    height: 1.5px;
+    width: 90%;
+    background: var(--light-grey);
+    order: 1;
+    align-self: center;
+}
+
+@media (min-width: 720px) {
+
+
+    .container {
+        width: 40rem;
+        padding: 1rem;
+    }
+
+    .form-inputs {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    .arrow-section {
+        justify-self: end;
+    }
+
+    .result-button {
+        margin-right: 2.5rem;
+        padding: 2rem;
+        background-size: auto;
+        width: 1rem;
+    }
+
+    .arrow-section::after {
+        left: 2rem;
+        width: 80%;
+    }
+
+    label {
+        letter-spacing: 2.5px;
+    }
+
+    input {
+        padding: auto;
+        font-size: 1.25rem;
+    }
+}
+    
