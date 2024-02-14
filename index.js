@@ -33,9 +33,39 @@ function age() {
 
     console.log("Your age is ", yearResult, " years ", monthResult, " months and", dayResult, " days");
 
-    // Display age on screen
-    document.getElementById("year-result").innerText = yearResult;
-    document.getElementById("month-result").innerText = monthResult;
-    document.getElementById("days-result").innerText = dayResult;
+    // Year Result with animation
+    let yearResAnimate = setInterval(() => {
+        animateResult("year-result", yearResult, yearResAnimate);
+    }, 20);
+
+    // Month Result Animation with delay
+    let monthResAnimate = setInterval(() => {
+        animateResult("month-result", monthResult, monthResAnimate);
+    }, 300);
+
+    // Day Result Animate with delay
+    let dayResAnimate = setInterval(() => {
+        animateResult("days-result", dayResult, dayResAnimate);
+    }, 100);
+
+}
+
+
+
+
+function animateResult(result, value, animateInterval) {
+
+    clearInterval(animateInterval);
+
+    let count = 0;
+
+    let idInterval = setInterval(function () {
+        let output = document.getElementById(result);
+        output.innerText = count;
+        count++;
+        if (count > value) {
+            clearInterval(idInterval);
+        }
+    }, 40);
 
 }
