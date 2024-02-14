@@ -6,6 +6,15 @@ function age() {
     let inputMonth = document.getElementById("month").value;
     let inputYear = document.getElementById("year").value;
 
+    if (sessionStorage.length > 0) {
+
+        if (sessionStorage.getItem("daycheck") == inputDay &&
+            sessionStorage.getItem("monthcheck") == inputMonth &&
+            sessionStorage.getItem("yearcheck") == inputYear) {
+            return;
+        }
+    }
+
     console.log("Day", inputDay, " Month", inputMonth, " Year", inputYear);
 
     let date = new Date(); // Current Date
@@ -47,6 +56,10 @@ function age() {
     let dayResAnimate = setInterval(() => {
         animateResult("days-result", dayResult, dayResAnimate);
     }, 100);
+
+    sessionStorage.setItem("daycheck", inputDay);
+    sessionStorage.setItem("monthcheck", inputMonth);
+    sessionStorage.setItem("yearcheck", inputYear);
 
 }
 
