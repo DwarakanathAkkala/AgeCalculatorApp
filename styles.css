@@ -201,8 +201,7 @@ input[type=number] {
 @media (min-width: 720px) {
 
 
-    .container {
-        width: 40rem;
+    .container {       
         padding: 1rem;
         border-radius: 1.5rem 1.5rem 10rem;
     }
@@ -217,7 +216,7 @@ input[type=number] {
     }
 
     .result-button {
-        margin-right: 2.5rem;
+        margin-right: 3rem;
         padding: 2rem;
         background-size: auto;
         width: 1rem;
@@ -235,17 +234,18 @@ input[type=number] {
 
     input {
         padding: auto;
-        font-size: 1.75rem;
-        max-width: 6rem;
+        font-size: 1.5rem;
+        max-width: 8rem;
         height: 3rem;
     }
 
     .poppins-extrabold-italic {
-        font-size: 5.25rem;
+        font-size: 3.75rem;
     }
 
     .age-result {
         margin-left: 2rem;
+        margin-bottom: 2rem;
     }
 }
     
