@@ -10,6 +10,11 @@ function age() {
     let inputMonth = document.getElementById("month").value;
     let inputYear = document.getElementById("year").value;
 
+    if (inputYear < 1500) {
+        alert("We do not support Historical ages :-)");
+        return;
+    }
+
     if (sessionStorage.length > 0) {
         if (sessionStorage.getItem("daycheck") == inputDay &&
             sessionStorage.getItem("monthcheck") == inputMonth &&
@@ -115,11 +120,9 @@ function checkInputs() {
     document.getElementById("year-input-error").innerText = "";
 
 
-
     if (dayValueCheck == "" || dayValueCheck == "undefined") {
         document.getElementById("day-input-error").innerText = "This field is required";
         dayEle.classList.add("error");
-
         return;
     }
 
@@ -130,7 +133,6 @@ function checkInputs() {
 
     // Leap Year Birth Day
     if (new Date(yearValueCheck, 1, 29).getDate() == 29) {
-        console.log("Leap Year")
         monthsArray[1] = 29;
         document.getElementById("day-input-error").innerText = "";
     }
@@ -139,22 +141,18 @@ function checkInputs() {
         monthsArray[1] = 28;
     }
 
-
     if (monthValueCheck == "" || monthValueCheck == "undefined") {
         document.getElementById("month-input-error").innerText = "This field is required";
         monthEle.classList.add("error");
-
         return;
     }
 
     if (monthValueCheck < 1 || monthValueCheck > 12) {
         document.getElementById("month-input-error").innerText = "Must be a valid month";
-
         return;
     }
 
     if (dayValueCheck > monthsArray[monthValueCheck - 1]) {
-
         document.getElementById("day-input-error").innerText = "Must be a valid date";
         document.getElementById("month-input-error").innerText = "";
 
@@ -166,16 +164,12 @@ function checkInputs() {
     }
 
     if (yearValueCheck == "" || yearValueCheck == "undefined") {
-
         document.getElementById("year-input-error").innerText = "This field is required";
-
         return;
     }
 
     if (yearValueCheck > new Date().getFullYear()) {
-
         document.getElementById("year-input-error").innerText = "Must be a valid year";
-
     }
 
     else {
