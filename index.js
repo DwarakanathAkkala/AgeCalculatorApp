@@ -1,6 +1,9 @@
+let errors = true;
 let monthsArray = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
 function age() {
+
+    if (errors == true) return;
 
     // Date of Birth (Input)
     let inputDay = document.getElementById("day").value;
@@ -176,6 +179,9 @@ function checkInputs() {
     }
 
     else {
+        // Updating error flag/boolean value
+        errors = false;
+
         for (let i = 0; i < list.length; i++) {
             list[i].classList.remove("error");
         }
