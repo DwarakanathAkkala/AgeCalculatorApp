@@ -171,6 +171,10 @@ function checkInputs() {
         document.getElementById("day-input-error").innerText = "Must be a valid date";
         document.getElementById("month-input-error").innerText = "";
 
+        dayEle.classList.add("error");
+        monthEle.classList.add("error");
+        yearEle.classList.add("error");
+
         for (let i = 0; i < list.length; i++) {
             list[i].classList.add("error");
         }
