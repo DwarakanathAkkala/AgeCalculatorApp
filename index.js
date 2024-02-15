@@ -125,7 +125,16 @@ function checkInputs() {
         return;
     }
 
+    // Leap Year Birth Day
+    if (new Date(yearValueCheck, 1, 29).getDate() == 29) {
+        console.log("Leap Year")
+        monthsArray[1] = 29;
+        document.getElementById("day-input-error").innerText = "";
+    }
 
+    if (!(new Date(yearValueCheck, 1, 29).getDate() == 29)) {
+        monthsArray[1] = 28;
+    }
 
 
     if (monthValueCheck == "" || monthValueCheck == "undefined") {
@@ -163,7 +172,6 @@ function checkInputs() {
     if (yearValueCheck > new Date().getFullYear()) {
 
         document.getElementById("year-input-error").innerText = "Must be a valid year";
-
 
     }
 
