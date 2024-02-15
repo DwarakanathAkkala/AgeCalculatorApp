@@ -101,6 +101,12 @@ input {
     font-size: 1.75rem;
 }
 
+input:active, input:focus {
+    border: 1.5px solid var(--purple);
+    outline: var(--purple);
+    cursor: pointer;
+}
+
 input[placeholder="*"] {
     color: var(--light-grey);
 }
@@ -210,6 +216,7 @@ input[type=number] {
         padding: 2rem;
         background-size: auto;
         width: 1rem;
+        cursor: pointer;
     }
 
     .arrow-section::after {
