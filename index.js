@@ -1,19 +1,37 @@
 let errors = true;
 let monthsArray = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+let list = document.querySelectorAll('label');
 
 function age() {
-
-    if (errors == true) return;
 
     // Date of Birth (Input)
     let inputDay = document.getElementById("day").value;
     let inputMonth = document.getElementById("month").value;
     let inputYear = document.getElementById("year").value;
 
+    if (inputDay == "" && inputMonth == "" && inputYear == "") {
+
+        for (let i = 0; i < list.length; i++) {
+            list[i].classList.add("error");
+        }
+
+        dayEle.classList.add("error");
+        monthEle.classList.add("error");
+        yearEle.classList.add("error");
+
+        document.getElementById("day-input-error").innerText = "This field is required";
+        document.getElementById("month-input-error").innerText = "This field is required";
+        document.getElementById("year-input-error").innerText = "This field is required";
+
+        return;
+    }
+
     if (inputYear < 1500) {
         alert("We do not support Historical ages :-)");
         return;
     }
+
+    if (errors == true) return;
 
     if (sessionStorage.length > 0) {
         if (sessionStorage.getItem("daycheck") == inputDay &&
@@ -102,9 +120,6 @@ function checkInputs() {
     let dayValueCheck = dayEle.value;
     let monthValueCheck = monthEle.value;
     let yearValueCheck = yearEle.value;
-
-    let list = document.querySelectorAll('label');
-
 
     // Reset Errors
     for (let i = 0; i < list.length; i++) {
