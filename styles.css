@@ -88,6 +88,12 @@ section {
     margin-bottom: 1rem;
 }
 
+
+/* label, span {
+    transition: all 0.75s;
+    transition-timing-function: ease-in-out;
+} */
+
 .form-inputs {
     display: grid;
     grid-area: inputs;
@@ -103,6 +109,17 @@ input {
     padding: 0.25rem 0.25rem 0.25rem 0.75rem;
     border: 1px solid var(--light-grey);
     font-size: 1.75rem;
+}
+
+label[class~="error"], div[class~="error"] {
+    color: var(--light-red);
+    font-size: 0.65rem;
+    margin-top: 0.5rem;
+}
+
+input[class~="error"] {
+    border-color: var(--light-red);
+    outline: none;
 }
 
 .input-col {

@@ -1,3 +1,4 @@
+let monthsArray = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
 function age() {
 
@@ -7,7 +8,6 @@ function age() {
     let inputYear = document.getElementById("year").value;
 
     if (sessionStorage.length > 0) {
-
         if (sessionStorage.getItem("daycheck") == inputDay &&
             sessionStorage.getItem("monthcheck") == inputMonth &&
             sessionStorage.getItem("yearcheck") == inputYear) {
@@ -15,15 +15,11 @@ function age() {
         }
     }
 
-    console.log("Day", inputDay, " Month", inputMonth, " Year", inputYear);
-
     let date = new Date(); // Current Date
 
     let currDay = date.getDate();
     let currMonth = 1 + date.getMonth();
     let currYear = date.getFullYear();
-
-    let monthsArray = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
     if (inputDay > currDay) {
         currDay = currDay + monthsArray[currMonth - 1];
@@ -80,5 +76,109 @@ function animateResult(result, value, animateInterval) {
             clearInterval(idInterval);
         }
     }, 40);
+
+}
+
+let dayEle = document.getElementById("day");
+let monthEle = document.getElementById("month");
+let yearEle = document.getElementById("year");
+
+
+// Check Inputs
+dayEle.addEventListener("input", () => { checkInputs(); })
+monthEle.addEventListener("input", () => { checkInputs(); });
+yearEle.addEventListener("input", () => { checkInputs(); });
+
+function checkInputs() {
+
+    let dayValueCheck = dayEle.value;
+    let monthValueCheck = monthEle.value;
+    let yearValueCheck = yearEle.value;
+
+    let list = document.querySelectorAll('label');
+
+
+    // Reset Errors
+    for (let i = 0; i < list.length; i++) {
+        list[i].classList.remove("error");
+    }
+
+    dayEle.classList.remove("error");
+    monthEle.classList.remove("error");
+    yearEle.classList.remove("error");
+
+    document.getElementById("day-input-error").innerText = "";
+    document.getElementById("month-input-error").innerText = "";
+    document.getElementById("year-input-error").innerText = "";
+
+
+
+    if (dayValueCheck == "" || dayValueCheck == "undefined") {
+        document.getElementById("day-input-error").innerText = "This field is required";
+        dayEle.classList.add("error");
+
+        return;
+    }
+
+    if (dayValueCheck < 1 || dayValueCheck > 31) {
+        document.getElementById("day-input-error").innerText = "Must be a valid day";
+        return;
+    }
+
+
+
+
+    if (monthValueCheck == "" || monthValueCheck == "undefined") {
+        document.getElementById("month-input-error").innerText = "This field is required";
+        monthEle.classList.add("error");
+
+        return;
+    }
+
+    if (monthValueCheck < 1 || monthValueCheck > 12) {
+        document.getElementById("month-input-error").innerText = "Must be a valid month";
+
+        return;
+    }
+
+    if (dayValueCheck > monthsArray[monthValueCheck - 1]) {
+
+        document.getElementById("day-input-error").innerText = "Must be a valid date";
+        document.getElementById("month-input-error").innerText = "";
+
+        for (let i = 0; i < list.length; i++) {
+            list[i].classList.add("error");
+        }
+
+        return;
+    }
+
+    if (yearValueCheck == "" || yearValueCheck == "undefined") {
+
+        document.getElementById("year-input-error").innerText = "This field is required";
+
+        return;
+    }
+
+    if (yearValueCheck > new Date().getFullYear()) {
+
+        document.getElementById("year-input-error").innerText = "Must be a valid year";
+
+
+    }
+
+    else {
+        for (let i = 0; i < list.length; i++) {
+            list[i].classList.remove("error");
+        }
+
+        dayEle.classList.remove("error");
+        monthEle.classList.remove("error");
+        yearEle.classList.remove("error");
+
+        document.getElementById("day-input-error").innerText = "";
+        document.getElementById("month-input-error").innerText = "";
+        document.getElementById("year-input-error").innerText = "";
+    }
 
 }
