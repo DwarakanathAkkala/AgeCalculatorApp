@@ -169,6 +169,11 @@ input[type=number] {
     border-radius: 50%;
 }
 
+.result-button:hover {
+    color: var(--off-white);
+    background-color: var(--off-black);
+}
+
 .arrow-section::after {
     content: '';
     display: block;
