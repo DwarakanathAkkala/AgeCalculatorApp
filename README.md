@@ -1,6 +1,6 @@
 # Frontend Mentor - Age Calculator App
 
-![Design preview for the QR Code Component challenge](./design/desktop-preview.jpg)
+![Design preview for the Age Calculator App challenge](./design/desktop-preview.jpg)
 
 ## Welcome! 👋
 
